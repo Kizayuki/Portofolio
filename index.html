@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Febrian - Mahasiswa Teknik Informatika</title>
+	<!-- Tailwind via CDN -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			darkMode: ['class'],
+			theme: { extend: {} }
+		}
+	</script>
+	<style>
+		:root { color-scheme: light dark; }
+		.theme-transition { transition: background-color .3s ease, color .3s ease; }
+	</style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 theme-transition">
+	<div id="toastNotification" class="fixed bottom-5 right-5 z-50 rounded-md bg-emerald-600 text-white px-4 py-3 shadow-lg opacity-0 pointer-events-none transition-opacity duration-300">
+		✅ Pesan berhasil dikirim!
+	</div>
+	<!-- NAVBAR -->
+	<header class="sticky top-0 z-40 bg-transparent backdrop-blur-sm">
+		<nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+			<a href="#" class="flex items-center gap-3">
+				<span class="w-10 h-10 rounded-md bg-emerald-500/20 flex items-center justify-center text-emerald-600 font-semibold">FM</span>
+				<span class="font-medium">Febrian Maulana</span>
+			</a>
+			<div class="hidden md:flex items-center gap-6">
+                <a href="#" class="hover:underline">Home</a>
+                <a href="#skills" class="hover:underline">Skills</a>
+				<a href="#education" class="hover:underline">Education</a>
+				<a href="#projects" class="hover:underline">Projects</a>
+				<a href="#contact" class="hover:underline">Contact</a>
+				<button id="themeToggle" aria-label="Toggle theme" class="ml-2 px-3 py-1 rounded-md bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300 theme-toggle-button inline-flex items-center">
+					<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414M12 8a4 4 0 110 8 4 4 0 010-8z"/></svg>
+					<span class="ml-2 theme-toggle-text">Dark Mode</span>
+				</button>
+			</div>
+			<div class="md:hidden">
+				<button id="mobileMenuBtn" class="px-3 py-1 rounded-md bg-emerald-50 text-emerald-600">Menu</button>
+			</div>
+		</nav>
+		<!-- mobile menu -->
+		<div id="mobileMenu" class="hidden md:hidden px-6 pb-4">
+            <a href="#" class="block py-2">Home</a>
+            <a href="#skills" class="block py-2">Skills</a>
+			<a href="#education" class="block py-2">Education</a>
+			<a href="#projects" class="block py-2">Projects</a>
+			<a href="#contact" class="block py-2">Contact</a>
+			<button id="themeToggleMobile" class="mt-2 px-3 py-1 rounded-md bg-emerald-50 text-emerald-600 w-full theme-toggle-button inline-flex items-center justify-center gap-2">
+				<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414M12 8a4 4 0 110 8 4 4 0 010-8z"/></svg>
+				<span class="theme-toggle-text">Dark Mode</span>
+			</button>
+		</div>
+	</header>
+
+	<!-- HERO -->
+	<section id="home" class="min-h-[calc(100vh-80px)] flex items-center pt-8 pb-16 w-full">
+		<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center w-full">
+			<div>
+				<h1 class="text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">Halo, Saya<br/><span class="text-emerald-600">Febrian Maulana</span></h1>
+				<p class="mt-6 text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">Seorang Full-Stack Developer | Mobile Enthusiast. 
+				    Mahasiswa Teknik Informatika semester 6 di Universitas Duta Bangsa Surakarta. 
+				    Memiliki pengalaman dalam pengembangan web full-stack, aplikasi mobile dan desktop. 
+				    Memiliki ketertarikan tinggi terhadap AI dan game development. 
+				    Selalu siap untuk terus belajar dan berkembang dalam dunia teknologi.</p>
+				<div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
+					<a href="#" class="inline-flex items-center justify-center px-6 py-3 bg-emerald-600 text-white rounded-md shadow-lg hover:bg-emerald-500">Download CV</a>
+					<div class="flex items-center gap-3">
+						<a href="https://github.com/Kizayuki" target="_blank" rel="noopener" class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-emerald-900/50">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.53-3.88-1.53-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.05 11.05 0 012.9-.39c.98 0 1.98.13 2.9.39 2.2-1.5 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.21.66.79.55C20.71 21.38 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z"/></svg>
+						</a>
+						<a href="https://www.linkedin.com/in/febrian-maulana-278929410" target="_blank" rel="noopener" class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-emerald-900/50">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zM8.5 8.98h4.8v2.06h.07c.67-1.26 2.3-2.59 4.74-2.59 5.07 0 6 3.33 6 7.66V24h-5V17.3c0-1.59-.03-3.63-2.21-3.63-2.21 0-2.55 1.73-2.55 3.52V24h-5V8.98z"/></svg>
+						</a>
+						<a href="mailto:febrianmaulana88123@gmail.com" class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-emerald-900/50">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2.25 4.5A2.25 2.25 0 014.5 2.25h15A2.25 2.25 0 0121.75 4.5v15a2.25 2.25 0 01-2.25 2.25h-15A2.25 2.25 0 012.25 19.5v-15zM4.5 5.75v.25l7 4.2 7-4.2v-.25H4.5zm13.5 2.7l-7 4.2-7-4.2V18h14V8.45z"/></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="w-full max-w-[340px] mx-auto md:ml-auto rounded-3xl overflow-hidden shadow-2xl relative bg-white dark:bg-slate-900">
+					<img src="images/Foto Pas.png" alt="Foto Profil" class="w-full h-auto object-cover">
+					<!-- optional overlay or decoration can go here -->
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SKILLS -->
+		<section id="skills" class="min-h-screen pt-28 pb-12 flex flex-col justify-center">
+			<div class="max-w-6xl mx-auto px-6 w-full">
+				<h2 class="text-3xl md:text-4xl font-bold mb-12">Skills</h2>
+				<div class="mt-6 grid gap-6 sm:grid-cols-2">
+				<div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+					<h3 class="text-lg font-semibold border-b border-slate-200 dark:border-slate-700 pb-3 mb-4">Frontend</h3>
+					<div class="flex flex-wrap gap-2">
+						<a href="https://react.dev" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">React.js</a>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">JavaScript</a>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">HTML</a>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">CSS</a>
+						<a href="https://tailwindcss.com" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">Tailwind CSS</a>
+					</div>
+				</div>
+				<div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+					<h3 class="text-lg font-semibold border-b border-slate-200 dark:border-slate-700 pb-3 mb-4">Backend</h3>
+					<div class="flex flex-wrap gap-2">
+						<a href="https://www.php.net/" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">PHP</a>
+						<a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">Python (Flask)</a>
+						<a href="https://nodejs.org" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">Node.js</a>
+						<a href="https://expressjs.com" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">Express.js</a>
+						<a href="https://aws.amazon.com/what-is/restful-api/" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">REST API</a>
+					</div>
+				</div>
+				<div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+					<h3 class="text-lg font-semibold border-b border-slate-200 dark:border-slate-700 pb-3 mb-4">Database</h3>
+					<div class="flex flex-wrap gap-2">
+						<a href="https://www.mysql.com" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">MySQL</a>
+						<a href="https://supabase.com" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">Supabase</a>
+					</div>
+				</div>
+				<div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+					<h3 class="text-lg font-semibold border-b border-slate-200 dark:border-slate-700 pb-3 mb-4">Mobile &amp; Desktop</h3>
+					<div class="flex flex-wrap gap-2">
+						<a href="https://flutter.dev" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">Flutter</a>
+						<a href="https://dart.dev" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">Dart</a>
+						<a href="https://www.java.com" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">Java</a>
+					</div>
+				</div>
+				<div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+					<h3 class="text-lg font-semibold border-b border-slate-200 dark:border-slate-700 pb-3 mb-4">Tools</h3>
+					<div class="flex flex-wrap gap-2">
+						<a href="https://git-scm.com" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">Git</a>
+						<a href="https://github.com" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">GitHub</a>
+						<a href="https://code.visualstudio.com" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-slate-300 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900">VS Code</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+
+		<!-- EDUCATION & EXPERIENCE -->
+		<section id="education" class="min-h-screen pt-28 pb-12 flex flex-col justify-center">
+			<div class="max-w-6xl mx-auto px-6 w-full">
+				<h2 class="text-3xl md:text-4xl font-bold mb-12">Education & Experience</h2>
+				<div class="mt-8 grid md:grid-cols-2 gap-12">
+				<div>
+					<h3 class="text-xl md:text-2xl font-semibold text-emerald-600 dark:text-emerald-400 mb-8 flex items-center gap-2">Riwayat Pendidikan</h3>
+					<div class="border-l border-slate-200 dark:border-slate-700 pl-6">
+						<div class="relative mb-12">
+							<span class="absolute -left-3 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white">1</span>
+							<div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-shadow ml-6">
+								<p class="text-sm text-emerald-600">2023 - Sekarang</p>
+								<h3 class="text-xl font-bold">S1-Teknik Informatika</h3>
+								<p class="mt-2 text-slate-600 dark:text-slate-300">Universitas Duta Bangsa Surakarta</p>
+								<p class="mt-3 text-sm text-slate-600 dark:text-slate-400">Fokus pada pengembangan perangkat lunak, data science, dan keamanan sistem.</p>
+							</div>
+						</div>
+						<div class="relative mb-12">
+							<span class="absolute -left-3 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white">2</span>
+							<div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-shadow ml-6">
+								<p class="text-sm text-emerald-600">2020 - 2023</p>
+								<h3 class="text-xl font-bold">Rekayasa Perangkat Lunak</h3>
+								<p class="mt-2 text-slate-600 dark:text-slate-300">SMK Negeri 5 Surakarta</p>
+								<p class="mt-3 text-sm text-slate-600 dark:text-slate-400">Mempelajari dasar-dasar pemrograman dan logika algoritma.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<h3 class="text-xl md:text-2xl font-semibold text-emerald-600 dark:text-emerald-400 mb-8 flex items-center gap-2">Riwayat Pekerjaan</h3>
+					<div class="border-l border-slate-200 dark:border-slate-700 pl-6">
+						<div class="relative mb-12">
+							<span class="absolute -left-3 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white">1</span>
+							<div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-shadow ml-6">
+								<p class="text-sm text-emerald-600">Februari 2022 - April 2022</p>
+								<h3 class="text-xl font-bold">Praktek Kerja Lapangan (PKL)</h3>
+								<p class="mt-2 text-slate-600 dark:text-slate-300">UPTD Transportasi Dishub Surakarta</p>
+								<p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Membantu beberapa pekerjaan staff di Dishub Surakarta.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+
+		<!-- PROJECTS -->
+		<section id="projects" class="min-h-screen pt-28 pb-12 flex flex-col justify-center">
+			<div class="max-w-6xl mx-auto px-6 w-full">
+				<h2 class="text-3xl md:text-4xl font-bold mb-12">Projects</h2>
+				<div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<!-- Card 1 -->
+				<article class="p-6 bg-white dark:bg-slate-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+					<img src="images/Resepku.png" alt="Project Image" class="w-full h-48 object-cover rounded-t-lg">
+					<h3 class="font-semibold mt-4">Resepku</h3>
+					<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Website untuk mencari resep masakan sederhana serta menjadi sarana interaksi bagi para pengguna yang ingin meningkatkan pengalaman memasak.</p>
+					<div class="mt-4 text-sm text-slate-500 dark:text-slate-400">React.js · Express.js · Bootstrap CSS</div>
+					<a href="https://github.com/Kizayuki/resepku.git" class="mt-4 inline-flex items-center gap-2 px-3 py-2 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-900">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.53-3.88-1.53-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.05 11.05 0 012.9-.39c.98 0 1.98.13 2.9.39 2.2-1.5 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.21.66.79.55C20.71 21.38 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z"/></svg>
+						Lihat Kode
+					</a>
+				</article>
+
+				<!-- Card 2 -->
+				<article class="p-6 bg-white dark:bg-slate-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+					<img src="images/WashApp.png" alt="Project Image" class="w-full h-48 object-cover rounded-t-lg">
+					<h3 class="font-semibold mt-4">WashApp</h3>
+					<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Aplikasi mobile jasa cuci kendaraan dengan fitur pemesanan dan pembayaran online.</p>
+					<div class="mt-4 text-sm text-slate-500 dark:text-slate-400">Flutter · Dart · Supabase</div>
+					<a href="https://github.com/Kizayuki/washapp.git" class="mt-4 inline-flex items-center gap-2 px-3 py-2 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-900">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.53-3.88-1.53-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.05 11.05 0 012.9-.39c.98 0 1.98.13 2.9.39 2.2-1.5 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.21.66.79.55C20.71 21.38 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z"/></svg>
+						Lihat Kode
+					</a>
+				</article>
+
+				<!-- Card 3 -->
+				<article class="p-6 bg-white dark:bg-slate-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+					<img src="images/RestoOrder.png" alt="Project Image" class="w-full h-48 object-cover rounded-t-lg">
+					<h3 class="font-semibold mt-4">Resto Order</h3>
+					<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Aplikasi order makanan untuk restoran dengan fitur pemesanan dan pembayaran.</p>
+					<div class="mt-4 text-sm text-slate-500 dark:text-slate-400">Java · MySQL</div>
+					<a href="https://github.com/Kizayuki/resto_order.git" class="mt-4 inline-flex items-center gap-2 px-3 py-2 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-900">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.53-3.88-1.53-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.05 11.05 0 012.9-.39c.98 0 1.98.13 2.9.39 2.2-1.5 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.21.66.79.55C20.71 21.38 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z"/></svg>
+						Lihat Kode
+					</a>
+				</article>
+			</div>
+		</div>
+		</section>
+
+		<!-- CONTACT -->
+		<section id="contact" class="min-h-screen pt-28 pb-12 flex flex-col justify-center">
+			<div class="max-w-6xl mx-auto px-6 w-full">
+				<h2 class="text-3xl md:text-4xl font-bold mb-12">Contact</h2>
+				<div class="mt-6 grid gap-8 lg:grid-cols-[1.5fr_1fr]">
+				<form id="contactForm" action="https://formspree.io/f/xnjkdvvn" method="POST" class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm">
+					<input type="text" name="_gotcha" style="display:none" />
+					<label class="block">
+						<span class="text-sm">Nama</span>
+						<input name="name" required class="mt-1 block w-full rounded-md border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2" placeholder="Nama Anda">
+					</label>
+					<label class="block mt-4">
+						<span class="text-sm">Email</span>
+						<input name="email" type="email" required class="mt-1 block w-full rounded-md border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2" placeholder="email@domain.com">
+					</label>
+					<label class="block mt-4">
+						<span class="text-sm">Subject</span>
+						<input name="subject" type="text" required class="mt-1 block w-full rounded-md border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2" placeholder="Subjek pesan">
+					</label>
+					<label class="block mt-4">
+						<span class="text-sm">Pesan</span>
+						<textarea name="message" required class="mt-1 block w-full rounded-md border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2" rows="4" placeholder="Tulis pesan..."></textarea>
+					</label>
+					<div class="mt-4">
+						<button id="contactSubmitButton" type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded-md">Kirim</button>
+					</div>
+				</form>
+				<div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm">
+					<h3 class="text-lg font-semibold">Informasi Kontak</h3>
+					<p class="mt-4 text-slate-600 dark:text-slate-300">Hubungi saya langsung melalui email atau telepon untuk kolaborasi dan kesempatan baru.</p>
+					<div class="mt-6 space-y-4">
+						<div class="flex items-start gap-3">
+							<span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300">
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2.25 4.5A2.25 2.25 0 014.5 2.25h15A2.25 2.25 0 0121.75 4.5v15a2.25 2.25 0 01-2.25 2.25h-15A2.25 2.25 0 012.25 19.5v-15zM4.5 5.75v.25l7 4.2 7-4.2v-.25H4.5zm13.5 2.7l-7 4.2-7-4.2V18h14V8.45z"/></svg>
+							</span>
+							<div>
+								<p class="text-sm text-slate-500 dark:text-slate-400">Email</p>
+								<a href="mailto:febrianmaulana88123@gmail.com" class="text-slate-800 dark:text-slate-100">febrianmaulana88123@gmail.com</a>
+							</div>
+						</div>
+						<div class="flex items-start gap-3">
+							<span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300">
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 21.5 2.5 13.93 2.5 4.5a1 1 0 011-1H7a1 1 0 011 1c0 1.35.26 2.67.76 3.88a1.003 1.003 0 01-.21 1.11l-2.2 2.2z"/></svg>
+							</span>
+							<div>
+								<p class="text-sm text-slate-500 dark:text-slate-400">No HP</p>
+								<a href="tel:+6289674300391" class="text-slate-800 dark:text-slate-100">+62 896-7430-0391</a>
+							</div>
+						</div>					
+                        <div class="flex items-start gap-3">
+						<span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 112.5-2.5 2.5 2.5 0 01-2.5 2.5z"/></svg>
+						</span>
+						<div>
+							<p class="text-sm text-slate-500 dark:text-slate-400">Lokasi</p>
+							<p class="text-slate-800 dark:text-slate-100">Semanggi, Surakarta, Jawa Tengah</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+	<!-- FOOTER -->
+	<footer class="border-t border-slate-100 dark:border-slate-800 mt-16">
+		<div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+			<div class="text-sm">© 2026 Febrian Maulana — Mahasiswa Teknik Informatika</div>
+			<div class="flex items-center gap-4">
+				<a href="https://github.com/Kizayuki" target="_blank" rel="noopener" class="text-slate-600 dark:text-slate-200 hover:text-emerald-600">
+					<!-- GitHub SVG -->
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.57.10.78-.25.78-.55 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.53-3.88-1.53-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.10-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.05 11.05 0 012.9-.39c.98 0 1.98.13 2.9.39 2.2-1.5 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.4-5.25 5.68.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.21.66.79.55C20.71 21.38 24 17.08 24 12c0-6.35-5.15-11.5-12-11.5z"/></svg>
+				</a>
+				<a href="https://www.linkedin.com/in/febrian-maulana-278929410" target="_blank" rel="noopener" class="text-slate-600 dark:text-slate-200 hover:text-emerald-600">
+					<!-- LinkedIn SVG -->
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zM8.5 8.98h4.8v2.06h.07c.67-1.26 2.3-2.59 4.74-2.59 5.07 0 6 3.33 6 7.66V24h-5V17.3c0-1.59-.03-3.63-2.21-3.63-2.21 0-2.55 1.73-2.55 3.52V24h-5V8.98z"/></svg>
+				</a>
+                <a href="mailto:febrianmaulana88123@gmail.com" class="text-slate-600 dark:text-slate-200 hover:text-emerald-600">
+					<!-- Email SVG -->
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+				</a>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		// Theme toggle logic with localStorage
+		const root = document.documentElement;
+		const themeKey = 'theme-preference';
+		const themeToggleButtons = document.querySelectorAll('.theme-toggle-button');
+
+		function updateThemeButtonText(isDark) {
+			themeToggleButtons.forEach(button => {
+				const label = button.querySelector('.theme-toggle-text');
+				if (label) label.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+			});
+		}
+
+		function applyTheme(isDark) {
+			if (isDark) root.classList.add('dark'); else root.classList.remove('dark');
+			localStorage.setItem(themeKey, isDark ? 'dark' : 'light');
+			updateThemeButtonText(isDark);
+		}
+
+		// initialize
+		(function(){
+			const saved = localStorage.getItem(themeKey);
+			if(saved) applyTheme(saved === 'dark');
+			else {
+				const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+				applyTheme(prefersDark);
+			}
+		})();
+
+		// Buttons
+		document.getElementById('themeToggle').addEventListener('click', () => applyTheme(!document.documentElement.classList.contains('dark')));
+		document.getElementById('themeToggleMobile').addEventListener('click', () => applyTheme(!document.documentElement.classList.contains('dark')));
+
+		// Mobile menu
+		const mobileBtn = document.getElementById('mobileMenuBtn');
+		const mobileMenu = document.getElementById('mobileMenu');
+		mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+	</script>
+	<script>
+		const contactForm = document.getElementById('contactForm');
+		const toastNotification = document.getElementById('toastNotification');
+
+		function showToast() {
+			if (!toastNotification) return;
+			toastNotification.classList.remove('opacity-0', 'pointer-events-none');
+			toastNotification.classList.add('opacity-100');
+
+			setTimeout(() => {
+				toastNotification.classList.remove('opacity-100');
+				toastNotification.classList.add('opacity-0', 'pointer-events-none');
+			}, 3000);
+		}
+
+		if (contactForm) {
+			contactForm.addEventListener('submit', async (event) => {
+				event.preventDefault();
+				const formData = new FormData(contactForm);
+				const actionUrl = contactForm.action;
+				try {
+					const response = await fetch(actionUrl, {
+						method: 'POST',
+						headers: {
+							'Accept': 'application/json'
+						},
+						body: formData
+					});
+					if (response.ok) {
+						showToast();
+						contactForm.reset();
+					} else {
+						alert('Terjadi kesalahan saat mengirim pesan.');
+					}
+				} catch (error) {
+					alert('Terjadi kesalahan jaringan. Silakan coba lagi.');
+				}
+			});
+		}
+	</script>
+</body>
+</html>
